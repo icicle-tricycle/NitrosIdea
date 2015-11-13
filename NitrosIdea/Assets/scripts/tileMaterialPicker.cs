@@ -6,6 +6,22 @@ public class tileMaterialPicker : MonoBehaviour {
     [SerializeField]
     int mat;
     float timer = 0;
+    public enum TileType
+    {
+        basic,
+        cardinal,
+        diagional,
+        pillar,
+    };
+    [System.NonSerialized]
+    /// <summary>
+    /// Variable that affects what kind of material swap is done
+    /// It is hidden in inspector, because it should sync with the
+    /// tile's type instead of having us set it manually
+    /// </summary>
+    public TileType Type;
+
+    #region basic tile properties
     /*[System.Serializable]
     class Materials : System.Object
     {*/
@@ -35,10 +51,21 @@ public class tileMaterialPicker : MonoBehaviour {
         [SerializeField]
         Material tile11;
     //}
+    #endregion
 
-	// Use this for initialization
+
+    // Use this for initialization
 	void Start () {
         mat = 0;
+        if (this.GetComponent<Tile>() != null)
+        {
+            //Debug.Log("Found tile Component");
+            Type = (TileType)this.GetComponent<Tile>().Type;
+        }
+        /*else
+        {
+            Debug.Log("Did not find tile Component");
+        }*/
 	}
 	
 	// Update is called once per frame
@@ -54,6 +81,7 @@ public class tileMaterialPicker : MonoBehaviour {
 
         MeshRenderer renderer = GetComponent<MeshRenderer>();
 
+        #region pick material
         //There has to be a better way... 
         //Like how in JS you can have '"tile" + mat'
         switch (mat)
@@ -121,5 +149,8 @@ public class tileMaterialPicker : MonoBehaviour {
             default:
                 break;
         }
-	}
+        #endregion
+
+
+    }
 }

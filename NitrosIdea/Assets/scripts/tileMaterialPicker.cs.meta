@@ -1,10 +1,22 @@
 fileFormatVersion: 2
 guid: 3a6b424577c36244eb50891c17beff5c
-timeCreated: 1447358852
+timeCreated: 1447424691
 licenseType: Pro
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - tile00: {fileID: 2100000, guid: 4b2e99af505a25a4590c03a13badd735, type: 2}
+  - tile01: {fileID: 2100000, guid: ddf41b8073e1d3a4f99f45c1e45f22d4, type: 2}
+  - tile02: {fileID: 2100000, guid: a50bff2171542ea4fab5de070e8a733c, type: 2}
+  - tile03: {fileID: 2100000, guid: 525ee491c33b53c489de6c8b8806937e, type: 2}
+  - tile04: {fileID: 2100000, guid: 00bc51f32d3392d4bb5bccb53f6e1f8f, type: 2}
+  - tile05: {fileID: 2100000, guid: df56992dbc18f4c44906f0509edc63b2, type: 2}
+  - tile06: {fileID: 2100000, guid: c7101089257334641ac3fb657a1260a2, type: 2}
+  - tile07: {fileID: 2100000, guid: 1775024e9f867e243ad6b4bf353eaa7e, type: 2}
+  - tile08: {fileID: 2100000, guid: 2c49e33fb85ce6646b9bb32f2a547aae, type: 2}
+  - tile09: {fileID: 2100000, guid: a74193cc935333f4ca598c6b0e87bb76, type: 2}
+  - tile10: {fileID: 2100000, guid: b1e104f87eba5e54e8f66054cf50dfb9, type: 2}
+  - tile11: {fileID: 2100000, guid: 4f20990f0391c804990b943ac4f9514b, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
