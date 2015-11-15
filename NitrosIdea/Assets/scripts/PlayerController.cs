@@ -6,9 +6,11 @@ public class PlayerController: MonoBehaviour {
 	public GameObject player;
 	public float speed;
 	public float health;
+	public GameObject[,] tiles;
 
 	// Use this for initialization
 	void Start () {
+		tiles = GameObject.FindGameObjectWithTag ("Floor").GetComponent <TileArray>().GetGrid;
 		player = GameObject.FindGameObjectWithTag("Player");
 		speed = 0.1f;
 		health = 100;
@@ -26,5 +28,7 @@ public class PlayerController: MonoBehaviour {
 	}
 	void TakeDamage(float damage){	
 		health -= damage;
+	}
+	void UseTile(){
 	}
 }

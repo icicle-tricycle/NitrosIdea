@@ -15,7 +15,6 @@ public class Tile : MonoBehaviour {
     /// </summary>
     public TileType Type;
 
-
 	// Use this for initialization
 	void Start () {
 	
@@ -25,4 +24,6 @@ public class Tile : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	void FireAttack(){}
 }

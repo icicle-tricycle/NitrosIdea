@@ -25,7 +25,6 @@ public class TileArray : MonoBehaviour {
 			}
 		}
 	}
-	GameObject[,] GetGrid{get { return grid;} }
 	void MakeGrid(){
 		//TODO finish this method
 	}
@@ -35,4 +34,6 @@ public class TileArray : MonoBehaviour {
 			AddTile(temp[i]);
 		}
 	}
+
+	public GameObject[,] GetGrid{get { return grid;} }
 }
