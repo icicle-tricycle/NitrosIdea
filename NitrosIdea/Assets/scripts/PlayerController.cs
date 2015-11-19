@@ -5,7 +5,7 @@ public class PlayerController: MonoBehaviour {
 
 	public GameObject player;
 	public float speed;
-	public float health;
+	public int health;
 	public GameObject[,] tiles;
 
 	// Use this for initialization
@@ -20,15 +20,15 @@ public class PlayerController: MonoBehaviour {
 	void Update () {
 		Move ();
 	}
-	void Move() {
+	public void Move() {
 		if (Input.GetKey (KeyCode.W)) transform.position += (transform.forward * speed);
 		if (Input.GetKey (KeyCode.A)) transform.position += (transform.right * -speed);
 		if (Input.GetKey (KeyCode.S)) transform.position += (transform.forward * -speed);
 		if (Input.GetKey (KeyCode.D)) transform.position += (transform.right * speed);
 	}
-	void TakeDamage(float damage){	
+	public void TakeDamage(int damage){	
 		health -= damage;
 	}
-	void UseTile(){
+	public void UseTile(){
 	}
 }
