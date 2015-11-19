@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float speed;
     [SerializeField]
-    float health;
+    int health;
     [SerializeField]
     GameObject floor;
     [SerializeField]
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         floor = GameObject.FindGameObjectWithTag("Floor");
         player = GameObject.FindGameObjectWithTag("Player");
         speed = 0.1f;
-        health = 100f;
+        health = 100;
     }
 
     // Update is called once per frame
@@ -36,6 +36,22 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+        if (Input.GetKeyDown(KeyCode.E) && currTile)
+        {
+            usingTile = true;
+            //Starts a thread that calls this method
+            StartCoroutine("UseTile");
+        }
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            usingTile = false;
+        }
+
+        if (usingTile)
+        {
+            return;
+        }
+
         if (Input.GetKey(KeyCode.W))
         {
             transform.position += (transform.forward * speed);
@@ -52,24 +68,16 @@ public class PlayerController : MonoBehaviour
         {
             transform.position += (transform.right * speed);
         }
-        if (Input.GetKeyDown(KeyCode.E) && currTile)
-        {
-            usingTile = true;
-            StartCoroutine("UseTile");
-        }
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            usingTile = false;
-        }
     }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         health -= damage;
     }
 
     IEnumerator UseTile()
     {
+        //leaves the method for X seconds and then finishes the method later
         yield return new WaitForSeconds(tileUseTime);
         if (!usingTile)
         {
