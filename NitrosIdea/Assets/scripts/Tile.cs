@@ -25,5 +25,5 @@ public class Tile : MonoBehaviour {
 	
 	}
 
-	void FireAttack(){}
+	public void FireAttack(){}
 }
