@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         floor = GameObject.FindGameObjectWithTag("Floor");
         player = GameObject.FindGameObjectWithTag("Player");
         speed = 0.1f;
-        health = 100f;
+        health = 100;
     }
 
     // Update is called once per frame
