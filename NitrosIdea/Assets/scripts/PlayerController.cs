@@ -36,6 +36,22 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+        if (Input.GetKeyDown(KeyCode.E) && currTile)
+        {
+            usingTile = true;
+            //Starts a thread that calls this method
+            StartCoroutine("UseTile");
+        }
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            usingTile = false;
+        }
+
+        if (usingTile)
+        {
+            return;
+        }
+
         if (Input.GetKey(KeyCode.W))
         {
             transform.position += (transform.forward * speed);
@@ -52,15 +68,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.position += (transform.right * speed);
         }
-        if (Input.GetKeyDown(KeyCode.E) && currTile)
-        {
-            usingTile = true;
-            StartCoroutine("UseTile");
-        }
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            usingTile = false;
-        }
     }
 
     void TakeDamage(float damage)
@@ -70,6 +77,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator UseTile()
     {
+        //leaves the method for X seconds and then finishes the method later
         yield return new WaitForSeconds(tileUseTime);
         if (!usingTile)
         {
