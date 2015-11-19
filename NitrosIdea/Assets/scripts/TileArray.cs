@@ -3,37 +3,47 @@ using System.Collections;
 
 public class TileArray : MonoBehaviour {
 
-	private GameObject[,] grid;
+    public Tile tile;
+    public GameObject Floor;
+
+    [System.NonSerialized]
+    public Vector2 BOARDSIZE = new Vector2(12, 12);
+    
+
+	private Tile[,] grid;
+    public Tile[,] GetGrid { get { return grid; } }
 
 	// Use this for initialization
 	void Start () {
-		grid = new GameObject[12, 12];
-		TakeGridFromScene ();
-
+        Debug.Log("started");
+        grid = new Tile[(int)BOARDSIZE.x, (int)BOARDSIZE.y];
+        Floor = GameObject.FindGameObjectWithTag("Floor");
+        MakeGrid();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
-	void AddTile(GameObject t){
-		for (int i = 0; i < grid.GetLength(0); i++) {
-			for(int j = 0; j < grid.GetLength (1); j++){
-				if(grid[i,j] = null){
-					grid[i,j] = t;
-				}
-			}
-		}
-	}
 	void MakeGrid(){
-		//TODO finish this method
-	}
-	void TakeGridFromScene(){
-		GameObject[] temp = GameObject.FindGameObjectsWithTag ("Tile");
-		for (int i = 0; i < temp.Length; i++) {
-			AddTile(temp[i]);
-		}
+        Tile temp;
+        for (int i = 0; i < BOARDSIZE.x; i++)
+        {
+            for (int j = 0; j < BOARDSIZE.y; j++)
+            {
+                if (grid[i, j] = null)
+                {
+                    temp = Instantiate(tile);
+                    temp.transform.position = new Vector3(
+                        -4.5f + i * (9 / BOARDSIZE.x),
+                        0f,
+                        -4.5f + i * (9 / BOARDSIZE.y)
+                        );
+                    grid[i, j] = temp;
+                }
+            }
+        }
 	}
 
-	public GameObject[,] GetGrid{get { return grid;} }
+	
 }

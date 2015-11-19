@@ -6,14 +6,14 @@ public class PlayerController: MonoBehaviour {
 	public GameObject player;
 	public float speed;
 	public float health;
-	public GameObject[,] tiles;
+	public GameObject floor;
 
 	// Use this for initialization
 	void Start () {
-		tiles = GameObject.FindGameObjectWithTag ("Floor").GetComponent <TileArray>().GetGrid;
+        floor = GameObject.FindGameObjectWithTag("Floor");
 		player = GameObject.FindGameObjectWithTag("Player");
 		speed = 0.1f;
-		health = 100;
+		health = 100f;
 	}
 	
 	// Update is called once per frame
