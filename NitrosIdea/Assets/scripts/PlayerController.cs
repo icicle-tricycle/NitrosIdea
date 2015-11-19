@@ -28,6 +28,11 @@ public class PlayerController : MonoBehaviour
         health = 100;
     }
 
+    void Update()
+    {
+        
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
