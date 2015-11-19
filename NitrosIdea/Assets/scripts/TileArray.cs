@@ -3,21 +3,21 @@ using System.Collections;
 
 public class TileArray : MonoBehaviour {
 
-    public Tile tile;
-    public GameObject Floor;
+    public GameObject tile;
+    //public GameObject Floor;
 
     [System.NonSerialized]
-    public Vector2 BOARDSIZE = new Vector2(12, 12);
-    
+    public Vector2 BOARDSIZE = new Vector2(9, 9);
 
-	private Tile[,] grid;
-    public Tile[,] GetGrid { get { return grid; } }
+
+    private GameObject[,] grid;
+    public GameObject[,] GetGrid { get { return grid; } }
 
 	// Use this for initialization
 	void Start () {
         Debug.Log("started");
-        grid = new Tile[(int)BOARDSIZE.x, (int)BOARDSIZE.y];
-        Floor = GameObject.FindGameObjectWithTag("Floor");
+        grid = new GameObject[(int)BOARDSIZE.x, (int)BOARDSIZE.y];
+        //Floor = GameObject.FindGameObjectWithTag("Floor");
         MakeGrid();
 	}
 	
@@ -26,24 +26,27 @@ public class TileArray : MonoBehaviour {
 	
 	}
 	void MakeGrid(){
-        Tile temp;
+        Debug.Log("started make grid");
+        GameObject temp;
         for (int i = 0; i < BOARDSIZE.x; i++)
         {
             for (int j = 0; j < BOARDSIZE.y; j++)
             {
-                if (grid[i, j] = null)
+                //if (grid[i, j] = null)
                 {
                     temp = Instantiate(tile);
                     temp.transform.position = new Vector3(
-                        -4.5f + i * (9 / BOARDSIZE.x),
-                        0f,
-                        -4.5f + i * (9 / BOARDSIZE.y)
+                        -4f + i * (9 / (BOARDSIZE.x + 0.0f)),
+                        0.01f,
+                        -4f + j * (9 / (BOARDSIZE.y + 0.0f))
                         );
                     grid[i, j] = temp;
+                    Debug.Log("made a tile?");
                 }
             }
         }
-	}
+        Debug.Log("Finished make grid");
+    }
 
 	
 }
