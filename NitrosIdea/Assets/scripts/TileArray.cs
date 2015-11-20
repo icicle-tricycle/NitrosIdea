@@ -4,10 +4,10 @@ using System.Collections;
 public class TileArray : MonoBehaviour {
 
     public GameObject tile;
+    public GameObject shockTile;
     //public GameObject Floor;
 
-    [System.NonSerialized]
-    public Vector2 BOARDSIZE = new Vector2(9, 9);
+    private Vector2 BOARDSIZE = new Vector2(9, 9);
 
 
     private GameObject[,] grid;
@@ -34,13 +34,24 @@ public class TileArray : MonoBehaviour {
             {
                 //if (grid[i, j] = null)
                 {
-                    temp = Instantiate(tile);
+                    int rng = Random.Range(0, 2);
+                    if (rng == 0)
+                    {
+                        temp = Instantiate(tile);
+                    }
+                    else
+                    {
+                        temp = Instantiate(shockTile);
+                    }
+
                     temp.transform.position = new Vector3(
                         -4f + i * (9 / (BOARDSIZE.x + 0.0f)),
                         0.01f,
                         -4f + j * (9 / (BOARDSIZE.y + 0.0f))
                         );
                     grid[i, j] = temp;
+                    temp.transform.parent = this.transform;
+                    temp.name = "Tile (" + i + "," + j + ")";
                     Debug.Log("made a tile?");
                 }
             }

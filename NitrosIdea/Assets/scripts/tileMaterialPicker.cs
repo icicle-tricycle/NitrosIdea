@@ -20,6 +20,8 @@ public class tileMaterialPicker : MonoBehaviour {
     /// tile's type instead of having us set it manually
     /// </summary>
     public TileType Type;
+    public bool on;
+    public float timeToChange;
 
     #region basic tile properties
     /*[System.Serializable]
@@ -70,11 +72,16 @@ public class tileMaterialPicker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(!on)
+        {
+            return;
+        }
         timer += Time.deltaTime;
-        if (timer > .3)
+        if (timer > timeToChange)
         {
             mat += 1;
-            if (mat > 11) mat = 0;
+            //skip starting white
+            if (mat > 11) mat = 1;
 
             timer = 0;
         }
