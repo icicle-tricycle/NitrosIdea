@@ -4,28 +4,28 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField]
-    GameObject player;
-    [SerializeField]
-    float speed;
-    [SerializeField]
-    int health;
-    [SerializeField]
-    GameObject floor;
-    [SerializeField]
-    float tileUseTime;
+    [SerializeField] float speed;
+    [SerializeField] int health;
+    [SerializeField] GameObject floor;
+    [SerializeField] float tileUseTime;
+    [SerializeField] int numFlashes;
+    [SerializeField] float flashTime;
 
+    GameObject player;
     public Tile currTile;
     bool usingTile;
+    bool isImmune = false;
+    MeshRenderer renderer;
 
 
     // Use this for initialization
     void Start()
     {
         floor = GameObject.FindGameObjectWithTag("Floor");
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = gameObject;
         speed = 0.1f;
         health = 100;
+        renderer = GetComponent<MeshRenderer>();
     }
 
     void Update()
@@ -77,7 +77,12 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        if (!isImmune)
+        {
+            health -= damage;
+            isImmune = true;
+            StartCoroutine(stopImmunity());
+        }
     }
 
     IEnumerator UseTile()
@@ -93,5 +98,16 @@ public class PlayerController : MonoBehaviour
         {
             currTile.FireAttack();
         }
+    }
+
+    IEnumerator stopImmunity()
+    {
+        for (int i = 0; i < numFlashes; i++)
+        {
+            renderer.enabled = !renderer.enabled;
+            yield return new WaitForSeconds(flashTime);
+        }
+        isImmune = false;
+        renderer.enabled = true;
     }
 }
