@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float tileUseTime;
     [SerializeField] int numFlashes;
     [SerializeField] float flashTime;
+    [SerializeField] bool isPlayerOne;
 
     GameObject player;
     public Tile currTile;
@@ -41,37 +42,74 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        if (Input.GetKeyDown(KeyCode.E) && currTile)
+        if (isPlayerOne)
         {
-            usingTile = true;
-            //Starts a thread that calls this method
-            StartCoroutine("UseTile");
+            if (Input.GetKeyDown(KeyCode.E) && currTile)
+            {
+                usingTile = true;
+                //Starts a thread that calls this method
+                StartCoroutine("UseTile");
+            }
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                usingTile = false;
+            }
         }
-        if (Input.GetKeyUp(KeyCode.E))
+        else
         {
-            usingTile = false;
+            if (Input.GetKeyDown(KeyCode.Space) && currTile)
+            {
+                usingTile = true;
+                //Starts a thread that calls this method
+                StartCoroutine("UseTile");
+            }
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                usingTile = false;
+            }
         }
 
         if (usingTile)
         {
             return;
         }
-
-        if (Input.GetKey(KeyCode.W))
+        if (isPlayerOne)
         {
-            transform.position += (transform.forward * speed);
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.position += (transform.forward * speed);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.position += (transform.right * -speed);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.position += (transform.forward * -speed);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.position += (transform.right * speed);
+            }
         }
-        if (Input.GetKey(KeyCode.A))
+        else
         {
-            transform.position += (transform.right * -speed);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += (transform.forward * -speed);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += (transform.right * speed);
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                transform.position += (transform.forward * speed);
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                transform.position += (transform.right * -speed);
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                transform.position += (transform.forward * -speed);
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                transform.position += (transform.right * speed);
+            }
         }
     }
 
@@ -81,7 +119,10 @@ public class PlayerController : MonoBehaviour
         {
             health -= damage;
             isImmune = true;
-            StartCoroutine(stopImmunity());
+            if (!checkIsDead())
+            {
+                StartCoroutine(stopImmunity());
+            }
         }
     }
 
@@ -109,5 +150,15 @@ public class PlayerController : MonoBehaviour
         }
         isImmune = false;
         renderer.enabled = true;
+    }
+
+    bool checkIsDead()
+    {
+        if (health <= 0)
+        {
+            gameObject.SetActive(false);
+            return true;
+        }
+        return false;
     }
 }
