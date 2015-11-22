@@ -34,14 +34,20 @@ public class TileArray : MonoBehaviour {
             {
                 //if (grid[i, j] = null)
                 {
-                    int rng = Random.Range(0, 2);
+                    int rng = Random.Range(0, 20);
                     if (rng == 0)
                     {
+                        temp = Instantiate(shockTile);
+                        
+                    }
+                    else if(rng <=4)
+                    {
+                        //temp = Instantiate(attack!)
                         temp = Instantiate(tile);
                     }
                     else
                     {
-                        temp = Instantiate(shockTile);
+                        temp = Instantiate(tile);
                     }
 
                     temp.transform.position = new Vector3(
