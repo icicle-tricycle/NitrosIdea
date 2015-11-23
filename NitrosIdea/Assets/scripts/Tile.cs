@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Tile : MonoBehaviour {
+public class Tile : MonoBehaviour
+{
 
     public enum TileType
     {
@@ -18,6 +19,7 @@ public class Tile : MonoBehaviour {
 
     [SerializeField]
     GameObject projectile;
+    [SerializeField] float destroyTimer;
 
 	// Use this for initialization
 	void Start () {
@@ -26,16 +28,6 @@ public class Tile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        if((transform.position.x < -5) ||
-            (transform.position.x > 5) ||
-            (transform.position.z > 5) ||
-            (transform.position.z < -5)
-            )
-        {
-            Debug.Log("entered destruction check");
-            Destroy(this.gameObject);
-        }
 	
 	}
 
@@ -51,21 +43,36 @@ public class Tile : MonoBehaviour {
                 }
             case TileType.Cardinal:
                 {
-                    Debug.Log("Cardinal");
                     plusProjectile up, down, left, right;
-                    up = Instantiate(projectile).GetComponent<plusProjectile>();
+                    GameObject proj;
+                    proj = Instantiate(projectile);
+                    up = proj.GetComponent<plusProjectile>();
+                    Destroy(proj, destroyTimer);
+ 
                     up.Up();
                     up.ignore = ignore;
                     up.transform.position = new Vector3 (this.transform.position.x,this.transform.position.y + .5f,this.transform.position.z);
-                    down = Instantiate(projectile).GetComponent<plusProjectile>();
+
+                    proj = Instantiate(projectile);
+                    down = proj.GetComponent<plusProjectile>();
+                    Destroy(proj, destroyTimer); 
+
                     down.Down();
                     down.ignore = ignore;
                     down.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + .5f, this.transform.position.z);
-                    left = Instantiate(projectile).GetComponent<plusProjectile>();
+
+                    proj = Instantiate(projectile);
+                    left = proj.GetComponent<plusProjectile>();
+                    Destroy(proj, destroyTimer); 
+
                     left.Left();
                     left.ignore = ignore;
                     left.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + .5f, this.transform.position.z);
-                    right = Instantiate(projectile).GetComponent<plusProjectile>();
+
+                    proj = Instantiate(projectile);
+                    right = proj.GetComponent<plusProjectile>();
+                    Destroy(proj, destroyTimer); 
+
                     right.Right();
                     right.ignore = ignore;
                     right.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + .5f, this.transform.position.z);
