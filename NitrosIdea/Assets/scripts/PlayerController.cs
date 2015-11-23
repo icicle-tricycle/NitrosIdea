@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
 
         if (currTile)
         {
-            currTile.FireAttack();
+            currTile.FireAttack(this);
         }
     }
 

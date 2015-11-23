@@ -5,6 +5,7 @@ public class TileArray : MonoBehaviour {
 
     public GameObject tile;
     public GameObject shockTile;
+    public GameObject cardinalTile;
     //public GameObject Floor;
 
     private Vector2 BOARDSIZE = new Vector2(9, 9);
@@ -42,8 +43,7 @@ public class TileArray : MonoBehaviour {
                     }
                     else if(rng <=4)
                     {
-                        //temp = Instantiate(attack!)
-                        temp = Instantiate(tile);
+                        temp = Instantiate(cardinalTile);
                     }
                     else
                     {
@@ -57,7 +57,7 @@ public class TileArray : MonoBehaviour {
                         );
                     grid[i, j] = temp;
                     temp.transform.parent = this.transform;
-                    temp.name = "Tile (" + i + "," + j + ")";
+                    temp.name = "(" + i + "," + j + ") " + temp.GetComponent<Tile>().Type + " Tile";
                     Debug.Log("made a tile?");
                 }
             }

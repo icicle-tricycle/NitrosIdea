@@ -86,7 +86,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 146392, guid: c7797f5d08ad5d34bb23104ac51c9acd, type: 2}
-  shockTile: {fileID: 135410, guid: 6d883dcb9f992844c9568b8bfb05d697, type: 2}
+  shockTile: {fileID: 147020, guid: 6d883dcb9f992844c9568b8bfb05d697, type: 2}
+  cardinalTile: {fileID: 116632, guid: 5ca6f405fc627414ebdafb07f675afcb, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -97,7 +98,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: shockTile
       value: 
-      objectReference: {fileID: 135410, guid: 6d883dcb9f992844c9568b8bfb05d697, type: 2}
+      objectReference: {fileID: 147020, guid: 6d883dcb9f992844c9568b8bfb05d697, type: 2}
+    - target: {fileID: 0}
+      propertyPath: cardinalTile
+      value: 
+      objectReference: {fileID: 116632, guid: 5ca6f405fc627414ebdafb07f675afcb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 198178}
