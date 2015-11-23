@@ -12,11 +12,21 @@ public class TileTriggerCode : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        other.gameObject.GetComponent<PlayerController>().currTile = parentTile;
+        if (other.tag == "PlayerCollider")
+        {
+            Debug.Log("made it to the inside");
+            other.GetComponentInParent<PlayerController>().currTile = parentTile;
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
-        other.gameObject.GetComponent<PlayerController>().currTile = null;
+        if (other.tag == "PlayerCollider")
+        {
+            if (other.GetComponentInParent<PlayerController>().currTile == parentTile)
+            {
+                other.GetComponentInParent<PlayerController>().currTile = null;
+            }
+        }
     }
 }
