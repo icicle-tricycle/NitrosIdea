@@ -19,20 +19,9 @@ public class plusProjectile : MonoBehaviour {
         NW
     };
     public Directions dir;
-
-	// Use this for initialization
-	void Start () {
-	
-	}
 	
 	// Update is called once per frame
 	void Update () {
-
-        //if (dir == Directions.N) this.transform.position += speed * transform.forward;
-        //else if (dir == Directions.S) this.transform.position += speed * transform.forward * -1;
-        //else if (dir == Directions.W) this.transform.position += speed * transform.right * -1;
-        //else if (dir == Directions.E) this.transform.position += speed * transform.right;
-
         switch (dir)
         {
             case Directions.N:
@@ -40,41 +29,41 @@ public class plusProjectile : MonoBehaviour {
                     this.transform.position += speed * transform.forward;
                     break;
                 }
-            //case Directions.NE:
-            //    {
-            //        this.transform.position += speed * transform.forward;
-            //        break;
-            //    }
+            case Directions.NE:
+                {
+                    this.transform.position += speed * new Vector3(.5f, 0, .5f);
+                    break;
+                }
             case Directions.E:
                 {
                     this.transform.position += speed * transform.right;
                     break;
                 }
-            //case Directions.SE:
-            //    {
-            //        this.transform.position += speed * transform.forward;
-            //        break;
-            //    }
+            case Directions.SE:
+                {
+                    this.transform.position += speed * new Vector3(.5f, 0, -.5f);
+                    break;
+                }
             case Directions.S:
                 {
                     this.transform.position += speed * transform.forward * -1;
                     break;
                 }
-            //case Directions.SW:
-            //    {
-            //        this.transform.position += speed * transform.forward;
-            //        break;
-            //    }
+            case Directions.SW:
+                {
+                    this.transform.position += speed * new Vector3(-.5f, 0, -.5f);
+                    break;
+                }
             case Directions.W:
                 {
                     this.transform.position += speed * transform.right * -1;
                     break;
                 }
-            //case Directions.NW:
-            //    {
-            //        this.transform.position += speed * transform.forward;
-            //        break;
-            //    }
+            case Directions.NW:
+                {
+                    this.transform.position += speed * new Vector3(-.5f, 0, .5f);
+                    break;
+                }
             default:
                 {
                     this.transform.position += speed * transform.forward * -1;
