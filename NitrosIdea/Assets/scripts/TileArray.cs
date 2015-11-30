@@ -42,11 +42,11 @@ public class TileArray : MonoBehaviour {
                         temp = Instantiate(shockTile);
                         
                     }
-                    else if(rng <=2)
+                    else if(rng <=3)
                     {
                         temp = Instantiate(cardinalTile);
                     }
-                    else if (rng <= 4)
+                    else if (rng <= 6)
                     {
                         temp = Instantiate(diagonalTile);
                     }
