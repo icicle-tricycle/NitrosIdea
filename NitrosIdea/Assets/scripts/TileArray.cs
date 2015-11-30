@@ -6,6 +6,7 @@ public class TileArray : MonoBehaviour {
     public GameObject tile;
     public GameObject shockTile;
     public GameObject cardinalTile;
+    public GameObject diagonalTile;
     //public GameObject Floor;
 
     private Vector2 BOARDSIZE = new Vector2(9, 9);
@@ -41,9 +42,13 @@ public class TileArray : MonoBehaviour {
                         temp = Instantiate(shockTile);
                         
                     }
-                    else if(rng <=4)
+                    else if(rng <=2)
                     {
                         temp = Instantiate(cardinalTile);
+                    }
+                    else if (rng <= 4)
+                    {
+                        temp = Instantiate(diagonalTile);
                     }
                     else
                     {

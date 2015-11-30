@@ -18,7 +18,8 @@ public class plusProjectile : MonoBehaviour {
         W,
         NW
     };
-    public Directions dir;
+    [SerializeField]
+    private Directions dir;
 	
 	// Update is called once per frame
 	void Update () {
@@ -93,6 +94,11 @@ public class plusProjectile : MonoBehaviour {
     {
         dir = Directions.E;
     }
+
+    public void NE() { dir = Directions.NE; }
+    public void NW() { dir = Directions.NW; }
+    public void SE() { dir = Directions.SE; }
+    public void SW() { dir = Directions.SW; }
 
     void OnTriggerStay(Collider other)
     {

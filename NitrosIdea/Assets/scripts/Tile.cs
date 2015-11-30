@@ -45,10 +45,10 @@ public class Tile : MonoBehaviour
                 {
                     plusProjectile up, down, left, right;
                     GameObject proj;
+
                     proj = Instantiate(projectile);
                     up = proj.GetComponent<plusProjectile>();
                     Destroy(proj, destroyTimer);
- 
                     up.Up();
                     up.ignore = ignore;
                     up.transform.position = new Vector3 (this.transform.position.x,this.transform.position.y + .5f,this.transform.position.z);
@@ -56,7 +56,6 @@ public class Tile : MonoBehaviour
                     proj = Instantiate(projectile);
                     down = proj.GetComponent<plusProjectile>();
                     Destroy(proj, destroyTimer); 
-
                     down.Down();
                     down.ignore = ignore;
                     down.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + .5f, this.transform.position.z);
@@ -64,7 +63,6 @@ public class Tile : MonoBehaviour
                     proj = Instantiate(projectile);
                     left = proj.GetComponent<plusProjectile>();
                     Destroy(proj, destroyTimer); 
-
                     left.Left();
                     left.ignore = ignore;
                     left.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + .5f, this.transform.position.z);
@@ -72,10 +70,43 @@ public class Tile : MonoBehaviour
                     proj = Instantiate(projectile);
                     right = proj.GetComponent<plusProjectile>();
                     Destroy(proj, destroyTimer); 
-
                     right.Right();
                     right.ignore = ignore;
                     right.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + .5f, this.transform.position.z);
+                    break;
+                }
+            case TileType.Diagional:
+                {
+                    plusProjectile ne, nw, se, sw;
+                    GameObject proj;
+
+                    proj = Instantiate(projectile);
+                    ne = proj.GetComponent<plusProjectile>();
+                    Destroy(proj, destroyTimer);
+                    ne.NE();
+                    ne.ignore = ignore;
+                    ne.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + .5f, this.transform.position.z);
+
+                    proj = Instantiate(projectile);
+                    nw = proj.GetComponent<plusProjectile>();
+                    Destroy(proj, destroyTimer);
+                    nw.NW();
+                    nw.ignore = ignore;
+                    nw.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + .5f, this.transform.position.z);
+
+                    proj = Instantiate(projectile);
+                    se = proj.GetComponent<plusProjectile>();
+                    Destroy(proj, destroyTimer);
+                    se.SE();
+                    se.ignore = ignore;
+                    se.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + .5f, this.transform.position.z);
+                    
+                    proj = Instantiate(projectile);
+                    sw = proj.GetComponent<plusProjectile>();
+                    Destroy(proj, destroyTimer);
+                    sw.SW();
+                    sw.ignore = ignore;
+                    sw.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + .5f, this.transform.position.z);
                     break;
                 }
             default:
