@@ -44,26 +44,26 @@ public class PlayerController : MonoBehaviour
     {
         if (isPlayerOne)
         {
-            if (Input.GetKeyDown(KeyCode.E) && currTile)
+            if (Input.GetKey(KeyCode.E) && currTile && !usingTile)
             {
                 usingTile = true;
                 //Starts a thread that calls this method
                 StartCoroutine("UseTile");
             }
-            if (Input.GetKeyUp(KeyCode.E))
+            else
             {
                 usingTile = false;
             }
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Space) && currTile)
+            if (Input.GetKey(KeyCode.Space) && currTile && !usingTile)
             {
                 usingTile = true;
                 //Starts a thread that calls this method
                 StartCoroutine("UseTile");
             }
-            if (Input.GetKeyUp(KeyCode.Space))
+            else
             {
                 usingTile = false;
             }
@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+
         if (isPlayerOne)
         {
             if (Input.GetKey(KeyCode.W))
@@ -119,9 +120,9 @@ public class PlayerController : MonoBehaviour
         {
             health -= damage;
             isImmune = true;
-            if (!checkIsDead())
+            if (!CheckIsDead())
             {
-                StartCoroutine(stopImmunity());
+                StartCoroutine(StopImmunity());
             }
         }
     }
@@ -129,7 +130,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator UseTile()
     {
         //leaves the method for X seconds and then finishes the method later
-        yield return new WaitForSeconds(tileUseTime);
+        yield return new WaitForSeconds(currTile.getUseTime());
         if (!usingTile)
         {
             yield break;
@@ -138,10 +139,32 @@ public class PlayerController : MonoBehaviour
         if (currTile)
         {
             currTile.FireAttack(this);
+            usingTile = false;
+
+            if (isPlayerOne)
+            {
+                if (Input.GetKey(KeyCode.E))
+                {
+                    usingTile = true;
+                    //Starts a thread that calls this method
+                    StopCoroutine("UseTile");
+                    StartCoroutine("UseTile");
+                }
+            }
+            else
+            {
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    usingTile = true;
+                    //Starts a thread that calls this method
+                    StopCoroutine("UseTile");
+                    StartCoroutine("UseTile");
+                }
+            }
         }
     }
 
-    IEnumerator stopImmunity()
+    IEnumerator StopImmunity()
     {
         for (int i = 0; i < numFlashes; i++)
         {
@@ -152,7 +175,7 @@ public class PlayerController : MonoBehaviour
         renderer.enabled = true;
     }
 
-    bool checkIsDead()
+    bool CheckIsDead()
     {
         if (health <= 0)
         {

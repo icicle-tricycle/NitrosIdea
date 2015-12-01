@@ -17,9 +17,9 @@ public class Tile : MonoBehaviour
     /// </summary>
     public TileType Type;
 
-    [SerializeField]
-    GameObject projectile;
+    [SerializeField] GameObject projectile;
     [SerializeField] float destroyTimer;
+    [SerializeField] float useTime;
 
 	// Use this for initialization
 	void Start () {
@@ -114,5 +114,10 @@ public class Tile : MonoBehaviour
         }
     
     
+    }
+
+    public float getUseTime()
+    {
+        return useTime;
     }
 }
