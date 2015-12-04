@@ -5,6 +5,8 @@ A arena fighter where your attacks are based on the tiles you're on!
 Created by: Peter McNamara, Wyatt Elsberry, Westley Waligora, and Matthew Fobare
 
 	To do:
+CHANGE INPUT HANLDING (using input controller in unity)
+	
 tile cool downs
 8-shot tile
 aimed projectile tile

@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (Input.GetKey(KeyCode.Space) && currTile && !usingTile)
+            if (Input.GetKey(KeyCode.RightControl) && currTile && !usingTile)
             {
                 usingTile = true;
                 //Starts a thread that calls this method
@@ -78,6 +78,8 @@ public class PlayerController : MonoBehaviour
         Debug.Log("test");
         if (isPlayerOne)
         {
+            //Input.GetAxis("Vertical");
+            //editor -> project settings -> something else
             if (Input.GetKey(KeyCode.W))
             {
                 transform.position += (transform.forward * speed);
@@ -155,7 +157,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                if (Input.GetKey(KeyCode.Space))
+                if (Input.GetKey(KeyCode.RightControl))
                 {
                     usingTile = true;
                     //Starts a thread that calls this method
