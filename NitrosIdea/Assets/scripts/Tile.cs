@@ -33,12 +33,11 @@ public class Tile : MonoBehaviour
 
 	public void FireAttack(PlayerController ignore)
     {
-        Debug.Log("Attacking");
+        //Debug.Log("Attacking");
         switch (Type)
         {
             case TileType.Basic:
                 {
-                    Debug.Log("basic");
                     break;
                 }
             case TileType.Cardinal:

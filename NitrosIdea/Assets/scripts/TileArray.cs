@@ -17,7 +17,7 @@ public class TileArray : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log("started");
+        //Debug.Log("started");
         grid = new GameObject[(int)BOARDSIZE.x, (int)BOARDSIZE.y];
         //Floor = GameObject.FindGameObjectWithTag("Floor");
         MakeGrid();
@@ -28,7 +28,7 @@ public class TileArray : MonoBehaviour {
 	
 	}
 	void MakeGrid(){
-        Debug.Log("started make grid");
+        //Debug.Log("started make grid");
         GameObject temp;
         for (int i = 0; i < BOARDSIZE.x; i++)
         {
@@ -63,11 +63,11 @@ public class TileArray : MonoBehaviour {
                     grid[i, j] = temp;
                     temp.transform.parent = this.transform;
                     temp.name = "(" + i + "," + j + ") " + temp.GetComponent<Tile>().Type + " Tile";
-                    Debug.Log("made a tile?");
+                    //Debug.Log("made a tile?");
                 }
             }
         }
-        Debug.Log("Finished make grid");
+        Debug.Log("Finished making the grid");
     }
 
 	

@@ -104,9 +104,7 @@ public class plusProjectile : MonoBehaviour {
     {
         if ( other.tag == "Player" && other.gameObject != ignore.gameObject)
         {
-            Debug.Log("dealt damage to " + other.gameObject.transform.name);
-            //Debug.Log("other object is: " + other.gameObject.transform.name);
-            //Debug.Log("Ignore target is: " + ignore.transform.name);
+            //Debug.Log("dealt damage to " + other.gameObject.transform.name);
             other.gameObject.GetComponent<PlayerController>().TakeDamage(5);
         }
     }

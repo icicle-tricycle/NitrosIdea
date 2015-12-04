@@ -14,7 +14,7 @@ public class TileTriggerCode : MonoBehaviour
     {
         if (other.tag == "PlayerCollider")
         {
-            Debug.Log("made it to the inside");
+            //Debug.Log("made it to the inside");
             other.GetComponentInParent<PlayerController>().currTile = parentTile;
         }
     }
