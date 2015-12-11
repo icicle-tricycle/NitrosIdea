@@ -27,47 +27,47 @@ public class plusProjectile : MonoBehaviour {
         {
             case Directions.N:
                 {
-                    this.transform.position += speed * transform.forward;
+                    this.transform.position += speed * transform.forward * Time.deltaTime;
                     break;
                 }
             case Directions.NE:
                 {
-                    this.transform.position += speed * new Vector3(.5f, 0, .5f);
+                    this.transform.position += speed * new Vector3(.5f, 0, .5f) * Time.deltaTime;
                     break;
                 }
             case Directions.E:
                 {
-                    this.transform.position += speed * transform.right;
+                    this.transform.position += speed * transform.right * Time.deltaTime;
                     break;
                 }
             case Directions.SE:
                 {
-                    this.transform.position += speed * new Vector3(.5f, 0, -.5f);
+                    this.transform.position += speed * new Vector3(.5f, 0, -.5f) * Time.deltaTime;
                     break;
                 }
             case Directions.S:
                 {
-                    this.transform.position += speed * transform.forward * -1;
+                    this.transform.position += speed * transform.forward * -1 * Time.deltaTime;
                     break;
                 }
             case Directions.SW:
                 {
-                    this.transform.position += speed * new Vector3(-.5f, 0, -.5f);
+                    this.transform.position += speed * new Vector3(-.5f, 0, -.5f) * Time.deltaTime;
                     break;
                 }
             case Directions.W:
                 {
-                    this.transform.position += speed * transform.right * -1;
+                    this.transform.position += speed * transform.right * -1 * Time.deltaTime;
                     break;
                 }
             case Directions.NW:
                 {
-                    this.transform.position += speed * new Vector3(-.5f, 0, .5f);
+                    this.transform.position += speed * new Vector3(-.5f, 0, .5f) * Time.deltaTime;
                     break;
                 }
             default:
                 {
-                    this.transform.position += speed * transform.forward * -1;
+                    this.transform.position += speed * transform.forward * -1 * Time.deltaTime;
                     break;
                 }
         }

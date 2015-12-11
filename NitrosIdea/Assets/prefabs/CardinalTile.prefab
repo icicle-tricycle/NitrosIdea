@@ -204,6 +204,10 @@ Prefab:
       propertyPath: useTime
       value: .200000003
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: plusProjectile
+      value: 
+      objectReference: {fileID: 153500, guid: aa7cfc063bc84484dbbb5eae43819b3b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 116632}

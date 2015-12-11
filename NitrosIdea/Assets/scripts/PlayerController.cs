@@ -71,11 +71,8 @@ public class PlayerController : MonoBehaviour
 
         if (usingTile)
         {
-            Debug.Log("Using a tile");
             return;
-
         }
-        Debug.Log("test");
         if (isPlayerOne)
         {
             //Input.GetAxis("Vertical");

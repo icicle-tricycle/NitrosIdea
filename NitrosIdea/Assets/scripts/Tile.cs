@@ -9,6 +9,7 @@ public class Tile : MonoBehaviour
         Basic,
         Cardinal,
         Diagional,
+        Aimed,
         Pillar,
         Shock,
     };
@@ -106,6 +107,17 @@ public class Tile : MonoBehaviour
                     sw.SW();
                     sw.ignore = ignore;
                     sw.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + .5f, this.transform.position.z);
+                    break;
+                }
+            case TileType.Aimed:
+                {
+                    GameObject projObj;
+                    projObj = Instantiate(projectile);
+                    aimProjectile proj = projObj.GetComponent<aimProjectile>();
+                    Destroy(proj, destroyTimer);
+                    proj.AimAtOther(ignore);
+                    proj.ignore = ignore;
+                    proj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + .5f, this.transform.position.z);
                     break;
                 }
             default:
