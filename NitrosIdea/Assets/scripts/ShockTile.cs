@@ -9,7 +9,7 @@ public class ShockTile : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            other.gameObject.GetComponent<PlayerController>().TakeDamage(5);
+            other.gameObject.GetComponent<PlayerController>().TakeDamage(1);
         }
 	}
 }

@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         floor = GameObject.FindGameObjectWithTag("Floor");
         player = gameObject;
         speed = 0.1f;
-        health = 100;
+        health = 10;
         renderer = GetComponent<MeshRenderer>();
     }
 

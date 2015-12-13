@@ -63,7 +63,7 @@ public class aimProjectile : MonoBehaviour
         if (other.tag == "Player" && other.gameObject != ignore.gameObject)
         {
             //Debug.Log("dealt damage to " + other.gameObject.transform.name);
-            other.gameObject.GetComponent<PlayerController>().TakeDamage(5);
+            other.gameObject.GetComponent<PlayerController>().TakeDamage(1);
         }
     }
 }
