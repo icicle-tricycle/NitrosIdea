@@ -35,6 +35,12 @@ public class aimProjectile : MonoBehaviour
 
     private void moveToTarget()
     {
+        //destroy this object if the target is gone
+        if(target==null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         vecToTarget = new Vector3(target.transform.position.x - this.transform.position.x, 0, target.transform.position.z - this.transform.position.z);
         vecToTarget.Normalize();
     }

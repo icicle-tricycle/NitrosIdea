@@ -176,7 +176,7 @@ MonoBehaviour:
   Type: 3
   projectile: {fileID: 125662, guid: 94d570a777725fc40b69b4187b71f525, type: 2}
   destroyTimer: 3
-  useTime: .200000003
+  useTime: .800000012
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -203,6 +203,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: timeToChange
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: useTime
+      value: .800000012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

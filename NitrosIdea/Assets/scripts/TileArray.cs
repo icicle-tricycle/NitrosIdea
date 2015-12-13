@@ -35,7 +35,7 @@ public class TileArray : MonoBehaviour {
                 if (rng == 0)
                 {
                     temp = Instantiate(shockTile);
-                    
+                    //Debug.Log(temp.GetComponent<Tile>().Type);
                 }
                 else if(rng <=3)
                 {

@@ -114,7 +114,7 @@ public class Tile : MonoBehaviour
                     GameObject projObj;
                     projObj = Instantiate(projectile);
                     aimProjectile proj = projObj.GetComponent<aimProjectile>();
-                    Destroy(proj, destroyTimer);
+                    Destroy(projObj, destroyTimer);
                     proj.AimAtOther(ignore);
                     proj.ignore = ignore;
                     proj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + .5f, this.transform.position.z);
