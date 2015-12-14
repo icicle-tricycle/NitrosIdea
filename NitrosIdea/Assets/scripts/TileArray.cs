@@ -32,7 +32,7 @@ public class TileArray : MonoBehaviour {
             resetTime-=Time.deltaTime;
             if(resetTime<0)
             {
-                Application.LoadLevel("main");
+                Application.LoadLevel("MainMenu");
             }
 
         }
