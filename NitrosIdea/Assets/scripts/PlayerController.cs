@@ -6,13 +6,13 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float speed;
     [SerializeField] int health;
-    [SerializeField] GameObject floor;
+    GameObject floor;
     [SerializeField] float tileUseTime;
     [SerializeField] int numFlashes;
     [SerializeField] float flashTime;
     [SerializeField] bool isPlayerOne;
 
-    GameObject player;
+    //GameObject player;
     public Tile currTile;
     bool usingTile;
     bool isImmune = false;
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         floor = GameObject.FindGameObjectWithTag("Floor");
-        player = gameObject;
+        //player = gameObject;
         speed = 0.1f;
         health = 10;
         renderer = GetComponent<MeshRenderer>();
@@ -32,6 +32,40 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnDisable()
+    {
+        if(isPlayerOne)
+        {
+            print("Player 1 is dead");
+        }
+        else
+        {
+            print("Player 2 is dead");
+        }
+        if (floor != null)
+        {
+            floor.GetComponent<TileArray>().resetNeeded = true;
+        }
+    }
+
+    void OnEnable()
+    {
+        
+        if (health > 0) return;
+
+        health = 10;
+        isImmune = false;
+        if (isPlayerOne)
+        {
+            print("Player 1 is alive");
+        }
+        else
+        {
+            print("Player 2 is alive");
+        }
+
     }
 
     // Update is called once per frame
@@ -185,4 +219,5 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
+
 }

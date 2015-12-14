@@ -8,6 +8,9 @@ public class TileArray : MonoBehaviour {
     public GameObject cardinalTile;
     public GameObject diagonalTile;
     public GameObject aimedTile;
+    [System.NonSerialized]
+    public bool resetNeeded = false;
+    public float resetTime = 3f;
 
     private Vector2 BOARDSIZE = new Vector2(9, 9);
 
@@ -23,6 +26,16 @@ public class TileArray : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if(resetNeeded)
+        {
+            resetTime-=Time.deltaTime;
+            if(resetTime<0)
+            {
+                Application.LoadLevel("main");
+            }
+
+        }
 	
 	}
 	void MakeGrid(){
