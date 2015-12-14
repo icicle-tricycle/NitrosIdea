@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     bool usingTile;
     bool isImmune = false;
     MeshRenderer renderer;
-
+	public TextMesh healthText;
+	GameObject healthBar;
 
     // Use this for initialization
     void Start()
@@ -25,8 +26,9 @@ public class PlayerController : MonoBehaviour
         floor = GameObject.FindGameObjectWithTag("Floor");
         player = gameObject;
         speed = 0.1f;
-        health = 10;
+        health = 8;
         renderer = GetComponent<MeshRenderer>();
+		healthBar = transform.GetChild(1).gameObject;
     }
 
     void Update()
@@ -126,6 +128,7 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(StopImmunity());
             }
         }
+		healthBar.transform.GetChild(health).GetComponent<MeshRenderer>().enabled = false;
     }
 
     IEnumerator UseTile()
